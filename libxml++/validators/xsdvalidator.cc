@@ -145,6 +145,7 @@ void XsdValidator::validate(const Document* document)
 
   xmlResetLastError();
   initialize_context();
+  xmlSchemaSetValidOptions(pimpl_->context, XML_SCHEMA_VAL_VC_I_CREATE);
 
   const int res = xmlSchemaValidateDoc(pimpl_->context, const_cast<xmlDoc*>(document->cobj()));
   if (res != 0)
